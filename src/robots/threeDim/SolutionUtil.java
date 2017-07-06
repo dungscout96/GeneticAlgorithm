@@ -53,7 +53,7 @@ public class SolutionUtil {
                     total_repeated += mr.repeated[index];
                 }
 
-                int avg_dist_to_goal_of_root = su.getAverageDistanceToGoal(start_state);
+                int avg_dist_to_goal_of_root = su.getAverageDistanceToGoal(start_state, 0);
 
                 String repeated = String.format("%s: %10d\n", "Number of times Total repeated", total_repeated);
                 String fitness = String.format("%15s: %10d\n", "Fitness", mr.getScore());
@@ -63,11 +63,11 @@ public class SolutionUtil {
                 String bots = String.format("%15s: %10d\n", "Hit Robots", sol.getHitBots());
 
                 //print it and its solution
-                writer.write("Start state first child: " + start_state.getChildren().get(0).toString());
+                writer.write("Start state third child: " + start_state.getChildren().get(2).toString());
                 writer.newLine();
-                writer.write("Start state first child's parent should be start state: " + start_state.getChildren().get(0).getParent());
+                writer.write("Start state first child's parent should be start state: " + start_state.getChild(0).getParent());
                 writer.newLine();
-                writer.write("Start state first child step should be 1: " + start_state.getChildren().get(0).getSteps());
+                writer.write("Start state first child step should be 1: " + start_state.getChild(0).getSteps());
                 writer.newLine();
                 writer.write("Average distance to goal of root: " + avg_dist_to_goal_of_root);
                 writer.newLine();
@@ -157,33 +157,33 @@ public class SolutionUtil {
         return str;
     }
 
-    public int getAverageDistanceToGoal(MazeState root) {
-	    return getAverageDistanceToGoal(root, 0);
+    private int getAverageDistanceToGoal(MazeState state, int dist) {
+	    int sum_dist = getDistanceToGoal(state, dist)*10000000;
+	    int num_child = state.getChildren().size() > 0 ? state.getChildren().size() : 1;
+	    if (num_child > 10000) {
+            System.out.println(num_child);
+        }
+        return sum_dist/num_child;
     }
 
-    private int getAverageDistanceToGoal(MazeState state, int dist) {
+    private int getDistanceToGoal(MazeState state, int dist) {
         if (!state.getChildren().isEmpty()) {
             int numChild = state.getChildren().size();
             int sum = 0;
             for (int i = 0; i < numChild; ++i) {
-                sum += getAverageDistanceToGoal(state.getChild(i), dist + 1);
+                sum += getDistanceToGoal(state.getChild(i), dist + 1);
             }
-            if (sum > 0) {
-                System.out.println("Sum: " + sum);
-            }
-
             //return sum / numChild;
             return sum;
         }
         else {
-	        if (state.isGoalState()) {
+            if (state.isGoalState()) {
                 return dist;
             }
             // the path that leads to death end should have value 0
             else {
-	            return 0;
+                return 0;
             }
         }
     }
-
 }

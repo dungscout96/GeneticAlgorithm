@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85948483-31dc-4887-aea5-bfc5e86b8805" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/robots/threeDim/MazeRepresentation.java" afterPath="$PROJECT_DIR$/src/robots/threeDim/MazeRepresentation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/robots/threeDim/MazeState.java" afterPath="$PROJECT_DIR$/src/robots/threeDim/MazeState.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/GeneticAlgorithmNewFitness/robots/threeDim/SolutionUtil.class" afterPath="$PROJECT_DIR$/out/production/GeneticAlgorithmNewFitness/robots/threeDim/SolutionUtil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/robots/threeDim/SolutionUtil.java" afterPath="$PROJECT_DIR$/src/robots/threeDim/SolutionUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/testTrial.sh" afterPath="$PROJECT_DIR$/test/testTrial.sh" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,25 +46,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testTrial.sh" pinned="false" current-in-tab="false">
+      <file leaf-file-name="testTrial.sh" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test/testTrial.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="9" column="112" lean-forward="false" selection-start-line="9" selection-start-column="112" selection-end-line="9" selection-end-column="112" />
+            <state relative-caret-position="176">
+              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SolutionUtil.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SolutionUtil.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/robots/threeDim/SolutionUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="175" column="22" lean-forward="false" selection-start-line="175" selection-start-column="22" selection-end-line="175" selection-end-column="22" />
+            <state relative-caret-position="308">
+              <caret line="160" column="61" lean-forward="false" selection-start-line="160" selection-start-column="61" selection-end-line="160" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6288#6289#0" expanded="true" />
-                <element signature="e#6341#6342#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -85,7 +84,7 @@
       <file leaf-file-name="MazeState.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/robots/threeDim/MazeState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
+            <state relative-caret-position="2442">
               <caret line="200" column="19" lean-forward="false" selection-start-line="200" selection-start-column="19" selection-end-line="200" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -123,11 +122,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/genetic/GeneticEvaluator.java" />
-        <option value="$PROJECT_DIR$/test/testTrial.sh" />
         <option value="$PROJECT_DIR$/../../AI/DIS course/AIProject/searchclient/searchclient/SearchClient.java" />
         <option value="$PROJECT_DIR$/src/robots/threeDim/MazeRepresentation.java" />
         <option value="$PROJECT_DIR$/src/robots/threeDim/MazeState.java" />
         <option value="$PROJECT_DIR$/src/robots/threeDim/SolutionUtil.java" />
+        <option value="$PROJECT_DIR$/test/testTrial.sh" />
       </list>
     </option>
   </component>
@@ -613,8 +612,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6288#6289#0" expanded="true" />
-            <element signature="e#6341#6342#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -711,8 +708,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6288#6289#0" expanded="true" />
-            <element signature="e#6341#6342#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1053,17 +1048,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/testTrial.sh">
+    <entry file="file://$PROJECT_DIR$/src/robots/threeDim/MazeRepresentation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="112" lean-forward="false" selection-start-line="9" selection-start-column="112" selection-end-line="9" selection-end-column="112" />
-          <folding />
+        <state relative-caret-position="6754">
+          <caret line="336" column="0" lean-forward="false" selection-start-line="336" selection-start-column="0" selection-end-line="336" selection-end-column="0" />
+          <folding>
+            <element signature="e#9266#9267#0" expanded="true" />
+            <element signature="e#9300#9301#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/robots/threeDim/MazeState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
+        <state relative-caret-position="2442">
           <caret line="200" column="19" lean-forward="false" selection-start-line="200" selection-start-column="19" selection-end-line="200" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1079,26 +1077,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/robots/threeDim/MazeRepresentation.java">
+    <entry file="file://$PROJECT_DIR$/src/robots/threeDim/SolutionUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6754">
-          <caret line="336" column="0" lean-forward="false" selection-start-line="336" selection-start-column="0" selection-end-line="336" selection-end-column="0" />
+        <state relative-caret-position="308">
+          <caret line="160" column="61" lean-forward="false" selection-start-line="160" selection-start-column="61" selection-end-line="160" selection-end-column="61" />
           <folding>
-            <element signature="e#9266#9267#0" expanded="true" />
-            <element signature="e#9300#9301#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/robots/threeDim/SolutionUtil.java">
+    <entry file="file://$PROJECT_DIR$/test/testTrial.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="175" column="22" lean-forward="false" selection-start-line="175" selection-start-column="22" selection-end-line="175" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6288#6289#0" expanded="true" />
-            <element signature="e#6341#6342#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="176">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
