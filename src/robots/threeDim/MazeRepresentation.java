@@ -26,6 +26,7 @@ public class MazeRepresentation  extends GeneticChromosome {
     public static final int BARRIER_MULTIPLIER = 1;
     public static final int STEP_MULTIPLIER = 10;
     protected BitSet board; // bit only represents whether a position has wall or not
+    protected MazeState start_state;
     protected MazeState solution;
     protected boolean solved;
     //protected int score;
@@ -243,6 +244,7 @@ public class MazeRepresentation  extends GeneticChromosome {
             repeated = new int[MazeState.TOTAL_STATES];
 
             MazeState state = new MazeState(this);
+            start_state = state;
 
             PriorityQueue<MazeState> queue = new PriorityQueue<MazeState>();
             queue.add(state);
@@ -326,6 +328,10 @@ public class MazeRepresentation  extends GeneticChromosome {
 
     public int getnStatesGenerated() {
         return nStatesGenerated;
+    }
+
+    public MazeState getStartState() {
+        return start_state;
     }
 
 }

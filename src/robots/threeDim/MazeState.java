@@ -39,6 +39,10 @@ public class MazeState implements Comparable<MazeState> {
     public static final int DIR_MOVE_MASK = 7;  //mask 111 (what the heck is this for?)
     
     //instance variables
+    // search tree info
+    protected MazeState parent;
+    protected ArrayList<MazeState> children;
+
     //representation is where the obstacles are
     protected MazeRepresentation maze;
     protected int steps;
@@ -71,9 +75,11 @@ public class MazeState implements Comparable<MazeState> {
         robots = R_START.clone();
         h = INIT_H;  //getHeuristic();//INIT_H;
         moves = new ArrayList<Integer>();
+        parent = null;
+        children = new ArrayList<MazeState>();
     }
 
-    public MazeState(MazeState copy, int robotIdx, int dir) {
+    public MazeState(MazeState copy, MazeState parent, int robotIdx, int dir) {
         this.maze = copy.maze;
         this.hitWalls = copy.hitWalls;
         this.hitBots = copy.hitBots;
@@ -85,6 +91,9 @@ public class MazeState implements Comparable<MazeState> {
         moveRobot(robotIdx, dir);
         //recalculate h
         h = getHeuristic();
+
+        this.parent = parent;
+        children = new ArrayList<MazeState>();
     }
 
     //expand this state, put the results in the priority queue
@@ -92,13 +101,15 @@ public class MazeState implements Comparable<MazeState> {
         //a new state for each robot, for each direction it can move
         for (int r = 0; r < robots.length; r++) {
             for (int d = 0; d < DIRECTIONS.length; d++) {
-                MazeState next = new MazeState(this, r, d);
+                MazeState next = new MazeState(this, this, r, d); // this child knew who its parent is
                 int stateID = next.getStateID();
                 //not a repeated state
                 if (!used.get(stateID)) {
                     used.set(stateID);
                     queue.add(next);
                     maze.setnStatesGenerated(maze.getnStatesGenerated()+1);
+                    // add the new state to the list of children of the current state
+                    addChild(next);
                 }
                 else { // check the tendency of going to loop
                     maze.repeated[next.getStateID()]++;
@@ -264,4 +275,21 @@ public class MazeState implements Comparable<MazeState> {
 		return hitBarrier;
 	}
 
+	public void addChild(MazeState s) {
+        children.add(s);
+    }
+
+    public MazeState getParent() {return parent;}
+
+    public MazeState getChild(int index) {
+        return children.get(index);
+    }
+
+    public ArrayList<MazeState> getChildren() {
+        return children;
+    }
+
+    public void setChildren(ArrayList<MazeState> c) {
+        children = (ArrayList<MazeState>) c.clone();
+    }
 }

@@ -1,5 +1,7 @@
 package robots.threeDim;
 import java.io.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Calendar;
 import java.util.Scanner;
@@ -35,6 +37,7 @@ public class SolutionUtil {
 
                 MazeRepresentation mr = new MazeRepresentation(bs);
 
+                // solve the puzzle
                 long t0 = Calendar.getInstance().getTimeInMillis();
                 if(!mr.solve()){
                     System.out.println("No solution");
@@ -42,12 +45,15 @@ public class SolutionUtil {
                 }
                 long t1 = Calendar.getInstance().getTimeInMillis();
 
+                MazeState start_state = mr.getStartState();
                 MazeState sol = mr.getSolution();
 
                 int total_repeated = 0;
                 for (int index = 0; index < mr.repeated.length; ++index) {
                     total_repeated += mr.repeated[index];
                 }
+
+                int avg_dist_to_goal_of_root = su.getAverageDistanceToGoal(start_state);
 
                 String repeated = String.format("%s: %10d\n", "Number of times Total repeated", total_repeated);
                 String fitness = String.format("%15s: %10d\n", "Fitness", mr.getScore());
@@ -57,6 +63,18 @@ public class SolutionUtil {
                 String bots = String.format("%15s: %10d\n", "Hit Robots", sol.getHitBots());
 
                 //print it and its solution
+                writer.write("Start state first child: " + start_state.getChildren().get(0).toString());
+                writer.newLine();
+                writer.write("Start state first child's parent should be start state: " + start_state.getChildren().get(0).getParent());
+                writer.newLine();
+                writer.write("Start state first child step should be 1: " + start_state.getChildren().get(0).getSteps());
+                writer.newLine();
+                writer.write("Average distance to goal of root: " + avg_dist_to_goal_of_root);
+                writer.newLine();
+                for (int index = 0; index < start_state.getChildren().size(); ++index) {
+                    writer.write("Average distance to goal of child " + index + ": " + su.getAverageDistanceToGoal(start_state.getChild(index), 1));
+                    writer.newLine();
+                }
                 writer.write("Solving time: " + (t1-t0));
                 writer.newLine();
                 writer.write(repeated);
@@ -131,13 +149,41 @@ public class SolutionUtil {
                         int x = maze.getX(index);
                         int y = maze.getY(index);
                         int z = maze.getZ(index);
-                        System.out.println("index: " + index);
                         str += String.format("(%d,%d,%d): %d, ", x, y, z, repeatMoveArrayOfRobot[index]);
                     }
                 }
                 str += "\n";
             }
         return str;
+    }
+
+    public int getAverageDistanceToGoal(MazeState root) {
+	    return getAverageDistanceToGoal(root, 0);
+    }
+
+    private int getAverageDistanceToGoal(MazeState state, int dist) {
+        if (!state.getChildren().isEmpty()) {
+            int numChild = state.getChildren().size();
+            int sum = 0;
+            for (int i = 0; i < numChild; ++i) {
+                sum += getAverageDistanceToGoal(state.getChild(i), dist + 1);
+            }
+            if (sum > 0) {
+                System.out.println("Sum: " + sum);
+            }
+
+            //return sum / numChild;
+            return sum;
+        }
+        else {
+	        if (state.isGoalState()) {
+                return dist;
+            }
+            // the path that leads to death end should have value 0
+            else {
+	            return 0;
+            }
+        }
     }
 
 }
