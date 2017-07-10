@@ -53,7 +53,7 @@ public class SolutionUtil {
                     total_repeated += mr.repeated[index];
                 }
 
-                double avg_dist_to_goal_of_root = su.getDistanceToGoal(start_state, 0);
+                double avg_dist_to_goal_of_root = su.getAvgDistanceToGoal(start_state, 0);
 
                 String repeated = String.format("%s: %10d\n", "Number of times Total repeated", total_repeated);
                 String fitness = String.format("%15s: %10d\n", "Fitness", mr.getScore());
@@ -72,7 +72,7 @@ public class SolutionUtil {
                 writer.write("Average distance to goal of root: " + avg_dist_to_goal_of_root);
                 writer.newLine();
                 for (int index = 0; index < start_state.getChildren().size(); ++index) {
-                    writer.write("Average distance to goal of child " + index + ": " + su.getDistanceToGoal(start_state.getChild(index), 1));
+                    writer.write("Average distance to goal of child " + index + ": " + su.getAvgDistanceToGoal(start_state.getChild(index), 1));
                     writer.newLine();
                 }
                 writer.write("Solving time: " + (t1-t0));
@@ -156,7 +156,7 @@ public class SolutionUtil {
             }
         return str;
     }
-
+/*
     private double getAverageDistanceToGoal(MazeState state, int dist) {
 	    double sum_dist = getDistanceToGoal(state, dist);
 	    int num_child = state.getChildren().size() > 0 ? state.getChildren().size() : 1;
@@ -165,13 +165,13 @@ public class SolutionUtil {
         }
         return sum_dist/num_child;
     }
-
-    private double getDistanceToGoal(MazeState state, int dist) {
+*/
+    private double getAvgDistanceToGoal(MazeState state, int dist) {
         if (!state.getChildren().isEmpty()) {
             int numChild = state.getChildren().size();
             double sum = 0.0;
             for (int i = 0; i < numChild; ++i) {
-                sum += getDistanceToGoal(state.getChild(i), dist + 1);
+                sum += getAvgDistanceToGoal(state.getChild(i), dist + 1);
             }
             return sum / numChild;
             //return sum;
