@@ -1,3 +1,9 @@
+# The game
+http://cs.gettysburg.edu/~cpresser/web3d/x3dom/MazeMockUp2.html
+
+# Result
+http://cs.gettysburg.edu/~cpresser/genAlg/mazes/allMazes.php
+
 # GeneticAlgorithm
 To create a Genetic Algorithm for a problem.
 1. Create a subclass of GeneticChromosome.
